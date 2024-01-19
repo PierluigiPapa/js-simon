@@ -5,12 +5,12 @@ const minutesHtml = document.getElementById('minutes');
 //Costante per stabilire i secondi
 const secondsHtml = document.getElementById('seconds');
 //Costante per stabilire la data di oggi
-const dateToday = new Date().getFullYear();
+const dateToday = new Date().getTime();
 //Costnte per stabilire la data della lezione di domani
-const lessionsTime = new Date("2024-01-19 09:30:00");
+const lessionsTime = new Date("2024-01-19 09:30:00").getTime();
 
 //Funzione per il countdown
-function updateCountdownLessions (){
+const updateCountdownLessions = setInterval (function(){
     const currentTime = new Date();
     //Calcolo per stabilire il tempo mancante per la lezione di domani
     const diff = lessionsTime - currentTime;
@@ -22,7 +22,12 @@ function updateCountdownLessions (){
     hoursHtml.innerHTML = ore;
     minutesHtml.innerHTML = minuti;
     secondsHtml.innerHTML = secondi;
-    // console.log(secondi);
-}
+    console.log(ore, minuti, secondi);
 
-setInterval(updateCountdownLessions, 1000);
+    if (diff < 0) {
+        clearInterval(updateCountdownLessions);
+
+        document.getElementById("countdown").innerHTML = "Countdown terminato!"
+    }
+    
+}, 1000 )

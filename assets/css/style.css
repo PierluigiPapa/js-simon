@@ -35,6 +35,13 @@ h1 {
     font-weight: normal;
 }
 
+#countdown {
+    color: #001533;
+    text-align: center;
+    font-size: 40px;
+    font-weight: normal;
+}
+
 .time {
     display: flex;
     flex-direction: column;
